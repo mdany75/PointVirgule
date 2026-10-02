@@ -5,6 +5,11 @@ PointVirgule inverse la touche décimale du pavé numérique : si elle tape
 une virgule, elle tapera un point; si elle tape un point, elle tapera une
 virgule. Les autres touches du clavier ne changent pas.
 
+Verr. Maj n'a aucun effet sur cette touche : elle tape le même caractère,
+que Verr. Maj soit activé ou non. Sur les claviers où Majuscule change le
+caractère de la touche (Canadien – CSA, français…), Majuscule + la touche
+tape l'autre caractère.
+
 Requiert macOS 13 (Ventura) ou plus récent. Fonctionne sur les Mac Apple
 Silicon et Intel.
 
