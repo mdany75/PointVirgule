@@ -4,6 +4,10 @@ Petite app macOS qui inverse la touche décimale du pavé numérique : si elle
 tape une virgule, elle tapera un point; si elle tape un point, elle tapera une
 virgule. Les autres touches du clavier ne changent pas.
 
+<p align="center">
+  <img src="docs/reglages.png" width="600" alt="Fenêtre de réglages de PointVirgule : inversion activée, ouverture automatique à l'ouverture de session et autorisation Accessibilité accordée">
+</p>
+
 - Verr. Maj n'a aucun effet sur cette touche.
 - Sur les claviers où Majuscule change le caractère de la touche
   (Canadien – CSA, français…), Majuscule + la touche tape l'autre caractère.
