@@ -29,11 +29,9 @@ Téléchargez [PointVirgule.dmg](https://github.com/mdany75/PointVirgule/release
 (toujours la dernière version), puis :
 
 1. Ouvrez l'image disque et glissez PointVirgule dans le dossier Applications,
-   puis ouvrez-la.
-2. macOS bloque la première ouverture, car l'app n'est pas distribuée par
-   l'App Store : allez dans Réglages Système > Confidentialité et sécurité et
-   cliquez sur « Ouvrir quand même ».
-3. Accordez l'autorisation « Accessibilité » demandée par l'app. macOS l'exige
+   puis ouvrez-la. L'app est signée avec un certificat Apple Developer ID et
+   notarisée par Apple : macOS l'ouvre sans avertissement.
+2. Accordez l'autorisation « Accessibilité » demandée par l'app. macOS l'exige
    pour qu'une app puisse modifier une touche.
 
 Requiert macOS 13 (Ventura) ou plus récent, sur Mac Apple Silicon ou Intel.
@@ -41,9 +39,9 @@ Requiert macOS 13 (Ventura) ou plus récent, sur Mac Apple Silicon ou Intel.
 Le détail de chaque étape, le dépannage et la désinstallation sont dans
 [Lisez-moi.txt](Resources/Lisez-moi.txt), aussi inclus dans l'image disque.
 
-Après une mise à jour de l'app, macOS exige de redonner l'autorisation : dans
-la fenêtre de PointVirgule, cliquez sur « Réinitialiser l'autorisation », puis
-accordez-la de nouveau.
+L'autorisation est conservée d'une version à l'autre. Si PointVirgule indique
+quand même « non accordée » après une mise à jour, cliquez sur « Réinitialiser
+l'autorisation » dans sa fenêtre, puis accordez-la de nouveau.
 
 ## Reconstruire
 
@@ -54,8 +52,12 @@ Seuls les outils de ligne de commande d'Apple sont requis
 ./build.sh
 ```
 
-lance les tests, compile l'app (Apple Silicon et Intel), la signe localement et
-produit `build/PointVirgule.dmg`.
+lance les tests, compile l'app (Apple Silicon et Intel), la signe et produit
+`build/PointVirgule.dmg`. Avec le certificat « Developer ID Application » dans le
+trousseau et le profil `notarisation` de `notarytool`, l'app est signée avec le
+runtime durci et l'image disque est notarisée chez Apple (quelques minutes) puis
+agrafée ; sans certificat, la signature est ad hoc et le script le dit.
+`SKIP_NOTARIZE=1 ./build.sh` saute la notarisation pour un essai rapide.
 
 ```bash
 ./build.sh --install

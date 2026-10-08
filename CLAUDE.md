@@ -25,7 +25,8 @@ Dans cet ordre :
 1. Mettre le numéro à jour dans `Resources/Info.plist` (`CFBundleShortVersionString`, et
    incrémenter `CFBundleVersion`) et ajouter la section `## X.Y — date` dans `CHANGELOG.md`.
 2. `git add -A && git commit -m "Version X.Y" && git push origin main`
-3. `./build.sh` (produit `build/PointVirgule.dmg`)
+3. `./build.sh` (produit `build/PointVirgule.dmg`, signé Developer ID et notarisé : attend la
+   réponse d'Apple, quelques minutes)
 4. `git tag -a vX.Y -m "Version X.Y" && git push origin vX.Y`
 5. `gh release create vX.Y "build/PointVirgule.dmg" --title "PointVirgule X.Y" --notes "$(~/.claude/skills/standard-projet/scripts/notes-version.sh X.Y)"`
 
@@ -34,9 +35,12 @@ Le README pointe vers `releases/latest/download/PointVirgule.dmg`.
 ## Règles
 
 - Répondre et écrire (commits, README, textes de l'interface) en français.
-- L'app est signée ad hoc : après chaque mise à jour installée, macOS exige de redonner
-  l'autorisation Accessibilité (bouton « Réinitialiser l'autorisation » dans l'app). Le
-  Lisez-moi et le README doivent continuer de l'expliquer.
+- `build.sh` signe avec le certificat « Developer ID Application » de Dany (trousseau) et
+  notarise l'image disque (profil `notarisation` de `notarytool`) : l'autorisation
+  Accessibilité survit alors aux mises à jour. Sans certificat, signature ad hoc : macOS
+  exige de redonner l'autorisation après chaque mise à jour (bouton « Réinitialiser
+  l'autorisation » dans l'app) ; le Lisez-moi et le README doivent continuer d'expliquer ce
+  cas. `SKIP_NOTARIZE=1` pour un essai rapide ; ne jamais publier une image non notarisée.
 - Les tests ne posent aucun événement clavier et n'installent aucun intercepteur : ils
   appellent `KeyRemapper.transform` sur des événements construits, pour chaque disposition
   installée. Toute modification de la conversion doit les faire passer.

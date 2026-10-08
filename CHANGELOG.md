@@ -1,5 +1,9 @@
 # Changements
 
+## 1.2 — 2026-10-08
+### Modifié
+- Application signée avec un certificat Apple Developer ID et image disque notarisée par Apple : plus de « Ouvrir quand même » au premier lancement, et l'autorisation Accessibilité est conservée d'une version à l'autre.
+
 ## 1.1 — 2026-10-02
 ### Corrigé
 - Verr. Maj n'influence plus la touche décimale : sur les dispositions comme
