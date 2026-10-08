@@ -2,7 +2,7 @@
 
 ## 1.2 — 2026-10-08
 ### Modifié
-- Application signée avec un certificat Apple Developer ID et image disque notarisée par Apple : plus de « Ouvrir quand même » au premier lancement, et l'autorisation Accessibilité est conservée d'une version à l'autre.
+- Application signée avec un certificat Apple Developer ID et image disque notarisée par Apple : plus de « Ouvrir quand même » au premier lancement, et l'autorisation Accessibilité est conservée d'une version à l'autre. Au passage à cette version, macOS demande une dernière fois l'autorisation Accessibilité (activer PointVirgule dans Réglages Système → Confidentialité et sécurité → Accessibilité), car la signature change.
 
 ## 1.1 — 2026-10-02
 ### Corrigé
